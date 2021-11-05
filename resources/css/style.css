@@ -1,0 +1,16 @@
+ /* Mensagem de Sucesso quando um produto é criado */
+ .msg{
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 8px;
+    width: 30%;
+    margin-bottom: 2px;
+    text-align: center;
+    padding: 10px;
+    margin-left: 520px;
+    margin-top: 6px;
+}
+
+error{
+    padding: 2px;
+}
