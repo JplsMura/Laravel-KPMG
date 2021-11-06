@@ -24,6 +24,8 @@ A intenção do projeto, era desenvolver um crud, com algumas peculiaridades. En
 - **Laravel**
 - **ORM Eloquent**
 - **MySQL**
+- **Docker**
+- **Docker Compose**
 
 ## Ambiente Docker
 
