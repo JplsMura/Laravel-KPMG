@@ -40,7 +40,7 @@ A intenção do projeto, era desenvolver um crud, com algumas peculiaridades. En
 
 1° Clonar o Projeto
 
-2° Abrir um terminal com a pasta do projet
+2° Abrir um terminal com a pasta do projeto
 
 3° docker-compose up -d --build (Subindo o container)
 
@@ -48,8 +48,19 @@ A intenção do projeto, era desenvolver um crud, com algumas peculiaridades. En
 
 5° composer install
 
-6° php artisan key:generate (Gerar a chave do arquivo .env)
+6° cp .env.example .env
 
-7° Criar o banco de dados e trocar o nome do mesmo no arquivo (.env)
+7° php artisan key:generate (Gerar a chave do arquivo .env)
 
-8° php artisan migrate (Criar as tabelas do banco de dados)
+8° Criar o banco de dados e trocar o nome do mesmo no arquivo (.env)
+
+9° 
+
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=database
+    DB_USERNAME=root
+    DB_PASSWORD=root
+
+10° php artisan migrate (Criar as tabelas do banco de dados)
