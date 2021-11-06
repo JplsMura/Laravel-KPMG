@@ -24,3 +24,30 @@ A intenção do projeto, era desenvolver um crud, com algumas peculiaridades. En
 - **Laravel**
 - **ORM Eloquent**
 - **MySQL**
+
+## Ambiente Docker
+
+
+### Requisito
+
+- **Docker**
+- **Docker Compose**
+
+
+#### Projeto
+
+1° Clonar o Projeto
+
+2° Abrir um terminal com a pasta do projet
+
+3° docker-compose up -d --build (Subindo o container)
+
+4° docker exec -it app bash (Entrar dentro do container)
+
+5° composer install
+
+6° php artisan key:generate (Gerar a chave do arquivo .env)
+
+7° Criar o banco de dados e trocar o nome do mesmo no arquivo (.env)
+
+8° php artisan migrate (Criar as tabelas do banco de dados)
