@@ -8,7 +8,7 @@
 
         <div class="m-3">
             <h2 class="text-center">
-                Atualização usuário de Matricula ({{ $dados->matricula }})
+                Atualização usuário de Matricula ({{ $dados->registration }})
             </h2>
             <hr>
         </div>
@@ -48,7 +48,7 @@
                            class="form-control @if ($errors->has('registration')) is-invalid @endif"
                            id="registration"
                            name="registration"
-                           value="{{ $dados->matricula }}"
+                           value="{{ $dados->registration }}"
                            placeholder="Digite o Número de Matricula"
                            required
                     >
