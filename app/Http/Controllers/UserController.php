@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Services\UserService;
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     // OK
     public function index()
     {
-        $dados = User::all();
+        $dados = $this->userService->getDados();
         return view('usuarios.index', ['dados' => $dados]);
     }
 
