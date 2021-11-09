@@ -39,7 +39,8 @@ class UserRequest extends FormRequest
 
             'required' => 'Este Campo :attribute é Obrigatório',
             'min' => 'Campo deve ter no mínimo 10 caracteres',
-            'string' => 'Esse campo deve ser composto por letras'
+            'string' => 'Esse campo deve ser composto por letras',
+            // 'unique' => 'Registro :attribute já existe em nossa base de dados, por favor tente novamente'
         ];
     }
 }
