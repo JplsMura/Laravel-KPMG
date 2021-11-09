@@ -17,7 +17,6 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    // OK
     public function index()
     {
         $dados = $this->userService->getDados();
@@ -31,32 +30,12 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
+        $user = $this->userService->createNewUser($request->validated());
 
-        $registration = User::where('matricula', $request->registration)->first();
-
-        if($registration = null || $registration != ''){
-            return back()->withInput()->with('msgError', 'Este Número de Matricula já existe, por favor tente outro !');
+        if(session('msgError')){
+            return $user;
         }
 
-        $email = User::where('email', $request->email)->first();
-
-        if($email = null || $email != ''){
-            return back()->withInput()->with('msgError', 'Este E-mail já existe, por favor tente outro !');
-        }
-
-        $user = new User;
-        $user->name = $request->name;
-        $user->matricula = $request->registration;
-        $user->email = $request->email;
-        $user->cpf = $request->cpf;
-
-        $cpf = User::where('cpf', $user->cpf)->first();
-
-        if($cpf = null || $cpf != ''){
-            return back()->withInput()->with('msgError', 'Este CPF já existe, por favor tente outro !');
-        }
-
-        $user->save();
         return redirect()->route('index')->with('msg', 'Usuário criado com sucesso!');
 
     }
