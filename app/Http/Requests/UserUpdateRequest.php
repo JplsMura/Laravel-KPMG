@@ -24,10 +24,10 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required|min:3|string',
-            'registration'  => 'required',
-            'email'         => 'required|email:rfc,dns',
-            'cpf'           => 'required'
+            'name'          => ['required', 'min:3', 'string'],
+            'registration'  => ['required'],
+            'email'         => ['required', 'email:rfc,dns'],
+            'cpf'           => ['required']
         ];
     }
 
