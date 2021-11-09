@@ -1,10 +1,10 @@
 <!-- <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p> -->
 
-<figure align="center">
+<p aling="center">
         <img src="https://m-ce.github.io/profile/images/kpmg.jpg"
         width="400" alt="KPMG image">
         <figcaption>Author Image: Marie-Charlotte Eyb</figcaption>
-</figure>
+</p>
 
 ## Sobre o Projeto
 
