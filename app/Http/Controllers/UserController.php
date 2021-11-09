@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Services\UserService;
-use App\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -42,62 +40,30 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $dados = User::find($id);
+        $dados = $this->userService->searchUser($id);
 
-        if(!empty($dados)){
-            return view('usuarios.update', ['dados' => $dados]);
-        }else {
-            return back()->withInput()->with('msgErro',
-                    'Usuário não encontrado, por favor entre em contato com a área responsável !');
+        if(session('msgError')){
+            return $dados;
         }
+
+        return view('usuarios.update', ['dados' => $dados]);
     }
 
     public function update(UserUpdateRequest $request, $id)
     {
-        // REGISTRATION
-        $registration = User::select("*")
-                            ->where('matricula', $request->registration)
-                            ->exists();
+        $dados = $this->userService->updateUser($request->validated(), $id);
 
-        if($registration === true){
-            return back()->withInput()->with('msgError', 'Este Número de Matricula já existe, por favor tente outro !');
+        if(session('msgError')){
+            return $dados;
         }
-
-        // EMAIL
-        $email = User::select("*")
-            ->where('email', $request->email)
-            ->exists();
-
-        if($email === true){
-            return back()->withInput()->with('msgError', 'Este E-mail já existe, por favor tente outro !');
-        }
-
-        // CPF
-        $cpf = User::select("*")
-            ->where('cpf', $request->cpf)
-            ->exists();
-
-        if($cpf === true){
-            return back()->withInput()->with('msgError', 'Este CPF já existe, por favor tente outro !');
-        }
-
-        $user = User::find($id);
-
-        $user->name = $request->name;
-        $user->matricula = $request->registration;
-        $user->email = $request->email;
-        $user->cpf = $request->cpf;
-        $user->save();
 
         return redirect()->route('index')->with('msg', 'Usuário atualizado com sucesso!');
     }
 
-    // OK
     public function destroy($id)
     {
-        $dado = User::find($id);
-        $dado->delete();
-        return redirect()->route('index')->with('msg', 'Usuário excluído com sucesso!');
+        $dados = $this->userService->deleteUser($id);
 
+        return redirect()->route('index')->with('msg', 'Usuário excluído com sucesso!');
     }
 }
