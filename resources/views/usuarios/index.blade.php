@@ -33,7 +33,7 @@
 
                 @foreach ($dados as $item)
                     <tr scope="row">
-                        <td>{{ $item->matricula }}</td>
+                        <td>{{ $item->registration }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                     <td id="cpf" name="cpf">{{ $item->cpf }}</td>
