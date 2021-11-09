@@ -3,7 +3,6 @@
 <p aling="center">
         <img src="https://m-ce.github.io/profile/images/kpmg.jpg"
         width="400" alt="KPMG image">
-        <figcaption>Author Image: Marie-Charlotte Eyb</figcaption>
 </p>
 
 ## Sobre o Projeto
