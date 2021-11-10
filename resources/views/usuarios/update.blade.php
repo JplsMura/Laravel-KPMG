@@ -13,10 +13,10 @@
             <hr>
         </div>
 
-        @if(session('msgError'))
-                <p class="alert alert-danger msg text-center" role="alert">
-                    {{ session('msgError')}}
-                </p>
+        @if(Session::has('fail'))
+            <p class="alert alert-danger msg text-center" role="alert">
+                {{Session::get('fail')}}
+            </p>
         @endif
 
         <form action="{{ route('update', ['id' => $dados->id]) }}"   method="POST" class="row m-3" class="form-signin">
