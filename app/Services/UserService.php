@@ -56,33 +56,6 @@ class UserService
 
     public function updateUser(array $data, string $id)
     {
-        // REGISTRATION
-        $registration = User::select("*")
-                            ->where('registration', $data['registration'])
-                            ->exists();
-
-        if($registration === true){
-            return back()->withInput()->with('msgError', 'Este Número de Matricula já existe, por favor tente outro !');
-        }
-
-        // EMAIL
-        $email = User::select("*")
-                    ->where('email', $data['email'])
-                    ->exists();
-
-        if($email === true){
-            return back()->withInput()->with('msgError', 'Este E-mail já existe, por favor tente outro !');
-        }
-
-        // CPF
-        $cpf = User::select("*")
-                    ->where('cpf', $data['cpf'])
-                    ->exists();
-
-        if($cpf === true){
-            return back()->withInput()->with('msgError', 'Este CPF já existe, por favor tente outro !');
-        }
-
         return $this->repository->updateUser($data, $id);
     }
 
