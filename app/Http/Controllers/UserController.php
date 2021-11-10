@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Services\UserService;
+use App\User;
 
 class UserController extends Controller
 {
@@ -30,19 +31,18 @@ class UserController extends Controller
     {
         $user = $this->userService->createNewUser($request->validated());
 
-        if(session('msgError')){
+        if (session('msgError')) {
             return $user;
         }
 
         return redirect()->route('index')->with('msg', 'Usuário criado com sucesso!');
-
     }
 
     public function edit($id)
     {
         $dados = $this->userService->searchUser($id);
 
-        if(session('msgError')){
+        if (session('msgError')) {
             return $dados;
         }
 
@@ -51,11 +51,37 @@ class UserController extends Controller
 
     public function update(UserUpdateRequest $request, $id)
     {
-        $dados = $this->userService->updateUser($request->validated(), $id);
+        // REGISTRATION
+        $registration = User::select("*")
+            ->where('registration', $request->registration)
+            ->exists();
 
-        if(session('msgError')){
-            return $dados;
+        if ($registration === true) {
+           return back()->withFail('Este Número de Matricula já existe, por favor tente outro !');
         }
+
+        // EMAIL
+        $email = User::select("*")
+            ->where('email', $request->email)
+            ->exists();
+
+        if ($email === true) {
+            return back()->withFail('Este E-mail já existe, por favor tente outro !');
+        }
+
+        $user = str_replace('.' ,  '' , $request->cpf);
+        $cpfClear = str_replace('-' ,  '' , $user);
+
+        // CPF
+        $cpf = User::select("*")
+            ->where('cpf', $cpfClear)
+            ->exists();
+
+        if ($cpf === true) {
+            return back()->withFail('Este CPF já existe, por favor tente outro !');
+        }
+
+        $dados = $this->userService->updateUser($request->validated(), $id);
 
         return redirect()->route('index')->with('msg', 'Usuário atualizado com sucesso!');
     }
