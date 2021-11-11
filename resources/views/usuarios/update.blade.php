@@ -33,7 +33,6 @@
                            name="name"
                            value="{{ $dados->name }}"
                            placeholder="Digite o Nome"
-                           required
                     >
 
                     <div class="invalid-feedback">
@@ -50,7 +49,7 @@
                            name="registration"
                            value="{{ $dados->registration }}"
                            placeholder="Digite o Número de Matricula"
-                           required
+                           
                     >
 
                     <div class="invalid-feedback">
@@ -67,7 +66,7 @@
                            name="email"
                            value="{{ $dados->email }}"
                            placeholder="Digite o E-mail"
-                           required
+                           
                     >
 
                     <div class="invalid-feedback">
@@ -84,7 +83,7 @@
                            name="cpf"
                            value="{{ $dados->cpf }}"
                            placeholder="Digite o CPF"
-                           required
+                           
                     >
 
                     <div class="invalid-feedback">

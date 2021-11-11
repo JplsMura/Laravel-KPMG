@@ -48,7 +48,7 @@
                            name="registration"
                            value="{{ old('registration')}}"
                            placeholder="Digite o Número de Matricula"
-                           required
+                           
                     >
 
                     <div class="invalid-feedback">
@@ -65,7 +65,7 @@
                            name="email"
                            value="{{ old('email')}}"
                            placeholder="Digite o E-mail"
-                           required
+                           
                     >
 
                     <div class="invalid-feedback">
@@ -82,7 +82,7 @@
                            name="cpf"
                            value="{{ old('cpf')}}"
                            placeholder="Digite o CPF"
-                           required
+                           
                            onkeyup="cpfCheck(this)"
                            maxlength="18"
                            onkeydown="javascript: fMasc( this, mCPF )"
